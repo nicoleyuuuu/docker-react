@@ -11,5 +11,5 @@ before_install:
 
 # series of command that need to be executed to run the test suite
 script:
-  # or docker run yt/docker-react npm run test -- --coverage to end the test after the tests are run
+  # or docker run yt/docker-react npm run test -- --coverage to end the test after the tests are run 
   - docker run -e CI=true yt/docker-react npm run test
