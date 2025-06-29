@@ -1,0 +1,15 @@
+# need super user permission to use docker; sudo required: grant super user required
+sudo: required
+
+services:
+  #automatically install docker in the running container
+  - docker
+
+# series of command that get executed before the test are ran
+before_install:
+  - docker build -t yt/docker-react -f Dockerfile.dev .
+
+# series of command that need to be executed to run the test suite
+script:
+  # or docker run yt/docker-react npm run test -- --coverage to end the test after the tests are run
+  - docker run -e CI=true yt/docker-react npm run test
