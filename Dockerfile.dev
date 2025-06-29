@@ -1,0 +1,14 @@
+# base image
+FROM node:lts-alpine
+
+# install dependencies
+WORKDIR /app
+COPY package.json .
+RUN npm install
+
+# technically this could be removed if we are using docker volumes
+# but if we decided not to use docker volumes or use docker prod instead, we still need it
+COPY . .
+
+# default command 
+CMD ["npm", "run", "start"]
