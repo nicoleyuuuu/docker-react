@@ -21,6 +21,8 @@ RUN npm run build
 
 # second base image: previous blocker completed, start a new block
 FROM nginx
+# elasticbeanstalk will find the expose statement and map the port
+EXPOSE 80
 # copy sth from another phase
 COPY --from=builder /app/build /usr/share/nginx/html
 # no need to specify CMD, because the default primary command is starting ngnix
