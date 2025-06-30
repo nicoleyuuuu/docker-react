@@ -7,6 +7,7 @@ services:
 
 # series of command that get executed before the test are ran
 before_install:
+  - gem install nokogiri --platform=ruby
   - docker build -t yt/docker-react -f Dockerfile.dev .
 
 # series of command that need to be executed to run the test suite
