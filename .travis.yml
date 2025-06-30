@@ -11,5 +11,26 @@ before_install:
 
 # series of command that need to be executed to run the test suite
 script:
-  # or docker run yt/docker-react npm run test -- --coverage to end the test after the tests are run 
+  # or docker run yt/docker-react npm run test -- --coverage to end the test after the tests are run
   - docker run -e CI=true yt/docker-react npm run test
+
+# config to specify how to take the application and deploy it to AWS
+deploy:
+  # travis ci has pre-configure to deploy the app to many different providers/hosting providers eg. AWS
+  # use the instruction to automatically deploy the application
+  provider: elasticbeanstalk
+  # customized config
+  region: "us-east-2"
+  app: "frontend"
+  env: "Frontend-env"
+  # copy all the file in the github repo to an S3 bucket, and then deploy it in elasticbeanstalk
+  bucket_name: "elasticbeanstalk-us-east-2-068544131701"
+  bucket_path: "frontend"
+  on: 
+    # only deploy the app, if there are code change in the master branch
+    branch: master
+# access key ID and secret access key is needed to connect AWS and travis
+# but since the repo is public
+# use a feature of env secretes provided by travis CI(set up in the setting of the repo in travis CI)
+assess_key_id: "$AWS_ACCESS_KEY"
+secret_assess_key: "$AWS_SECRET_KEY"
