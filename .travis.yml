@@ -29,8 +29,8 @@ deploy:
   on: 
     # only deploy the app, if there are code change in the master branch
     branch: master
-# access key ID and secret access key is needed to connect AWS and travis
-# but since the repo is public
-# use a feature of env secretes provided by travis CI(set up in the setting of the repo in travis CI)
-assess_key_id: ${AWS_ACCESS_KEY}
-secret_assess_key: ${AWS_SECRET_KEY}
+  # access key ID and secret access key is needed to connect AWS and travis
+  # but since the repo is public
+  # use a feature of env secretes provided by travis CI(set up in the setting of the repo in travis CI)
+  access_key_id: ${AWS_ACCESS_KEY}
+  secret_access_key: ${AWS_SECRET_KEY}
